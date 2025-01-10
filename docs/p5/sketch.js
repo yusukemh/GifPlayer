@@ -1,4 +1,4 @@
-let gifImage;
+let GIF;
 
 function setup() {
   createCanvas(800, 600);
@@ -16,21 +16,22 @@ function draw() {
   background(220);
 
   // Display the loaded image if available
-  if (gifImage) {
-    image(gifImage, 0, 0, gifImage.width, gifImage.height);
+  if (GIF) {
+    image(GIF.img, GIF.x, GIF.y, GIF.img.width, GIF.img.height);
   }
 }
 
 function mousePressed() {
-    if (gifImage) {
-        gifImage.pause()
+    if (GIF) {
+        GIF.toggle_state()
     }
+    
 }
 
 function handleFile(file) {
   if (file.type === 'image') {
     // Load the image using loadImage
-    gifImage = loadImage(file.data) 
+    GIF = new GigObj(loadImage(file.data), mouseX, mouseY)
   } else {
     console.log('Not an image file!');
     alert('Please drop a valid GIF file.');
