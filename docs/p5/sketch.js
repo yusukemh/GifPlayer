@@ -22,8 +22,10 @@ function draw() {
 
   // Display the loaded image if available
   if (GIF) {
+    // image(GIF.img, GIF.x, GIF.y, GIF.width * 2, GIF.height * 2);
     image(GIF.img, GIF.x, GIF.y, GIF.width, GIF.height);
     GIF.update()
+    console.log(GIF.img.getCurrentFrame())
   }
 
   RAK.update();
@@ -38,14 +40,23 @@ function draw() {
   }
 }
 
+function keyPressed(){
+    if (keyCode === RIGHT_ARROW){
+        GIF.forward()
+    } else if (keyCode === LEFT_ARROW) {
+        GIF.backward()
+    }
+
+}
+
 function mousePressed() {
     if (GIF) {
-        // GIF.toggle_state()
         GIF.mousePressed()
     }
     
 }
 function keyReleased() {
+    //reset the patiences for keys
     RAK.keyReleased();
     LAK.keyReleased();
 }
@@ -58,8 +69,7 @@ function handleFile(file) {
     background(220);
     if (file.type === 'image') {
         // Load the image using loadImage
-        GIF = new GigObj(loadImage(file.data, reinitialize_GIF), mouseX, mouseY);
-        // GIF = new GigObj(file.data, mouseX, mouseY)
+        GIF = new GigObj(loadImage(file.data, reinitialize_GIF), 0, 0);
         loop();
     } else {
         console.log('Not an image file!');
