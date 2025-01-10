@@ -25,7 +25,7 @@ function draw() {
     // image(GIF.img, GIF.x, GIF.y, GIF.width * 2, GIF.height * 2);
     image(GIF.img, GIF.x, GIF.y, GIF.width, GIF.height);
     GIF.update()
-    console.log(GIF.img.getCurrentFrame())
+    // console.log(GIF.img.getCurrentFrame())
   }
 
   RAK.update();

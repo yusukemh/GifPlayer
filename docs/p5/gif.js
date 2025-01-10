@@ -4,7 +4,7 @@ class GigObj {
         this.y = y
         this.img = img
         this.is_playing = true
-        this.curr_frame = 0// Variable for workaround; when img.pause() is called, the GIF pauses while internal img.getCurrentFrame() continues to increase.
+        // this.curr_frame = 0// Variable for workaround; when img.pause() is called, the GIF pauses while internal img.getCurrentFrame() continues to increase.
         this.play_button = new Button(0,0,0,0, "")
         this.fwrd_button = new Button(0,0,0,0, "")
         this.bkwd_button = new Button(0,0,0,0, "")
@@ -54,21 +54,22 @@ class GigObj {
 
     forward() {
         this.img.setFrame(this.img.getCurrentFrame() + 1)
-        this.curr_frame += 1
+        // this.curr_frame += 1
     }
 
     backward() {
         this.img.setFrame(this.img.getCurrentFrame() - 1)
-        this.curr_frame -= 1
+        // this.curr_frame -= 1
     }
 
     pause() {
         this.img.pause()
-        this.curr_frame = this.img.getCurrentFrame()
+        // this.curr_frame = this.img.getCurrentFrame()
     }
 
     play() {
-        this.img.setFrame(this.curr_frame)
+        // this.img.setFrame(this.curr_frame)
+        this.img.setFrame(this.img.getCurrentFrame())
         this.img.play()
     }
 
