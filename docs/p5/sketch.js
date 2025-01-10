@@ -1,6 +1,11 @@
 let GIF;
 let LAK;//left arrow key
 let RAK;
+let SPC;
+
+// function preload(){
+//     icon_play = loadImage('icons8-play-50.png')
+// }
 
 function setup() {
   createCanvas(800, 600);
@@ -11,6 +16,7 @@ function setup() {
   noLoop();
   LAK = new LeftArrowKey(hold_patience=30);
   RAK = new RightArrowKey(hold_patience=30);
+  SPC = new SpaceKey(hold_patience=0);
 
   // Set up file drop functionality
   let dropZone = select('canvas');
@@ -45,16 +51,19 @@ function keyPressed(){
         GIF.forward()
     } else if (keyCode === LEFT_ARROW) {
         GIF.backward()
+    } else if (keyCode === 32) {
+        GIF.toggle_state()
     }
 
+    return false;// prevent auto-scroll when pressing SPACE
 }
 
 function mousePressed() {
     if (GIF) {
         GIF.mousePressed()
     }
-    
 }
+
 function keyReleased() {
     //reset the patiences for keys
     RAK.keyReleased();

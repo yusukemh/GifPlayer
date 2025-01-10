@@ -31,3 +31,9 @@ class RightArrowKey extends Key {
       super(hold_patience, RIGHT_ARROW)
     }
 }
+
+class SpaceKey extends Key {
+    constructor(hold_patience){
+        super(hold_patience, 32)
+    }
+}
