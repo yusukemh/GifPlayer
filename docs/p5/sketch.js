@@ -29,7 +29,7 @@ function draw() {
   // Display the loaded image if available
   if (GIF) {
     // image(GIF.img, GIF.x, GIF.y, GIF.width * 2, GIF.height * 2);
-    image(GIF.img, GIF.x, GIF.y, GIF.width, GIF.height);
+    image(GIF.img, GIF.x, GIF.y, GIF.display_width, GIF.display_height);
     GIF.update()
     // console.log(GIF.img.getCurrentFrame())
   }
